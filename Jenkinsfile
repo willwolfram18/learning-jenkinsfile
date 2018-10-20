@@ -7,5 +7,10 @@ pipeline {
                 echo 'Hello world!'
             }
         }
+        stage('Stage 2') {
+            steps {
+                dotnet --version
+            }
+        }
     }
 }
