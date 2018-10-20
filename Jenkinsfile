@@ -1,10 +1,14 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
-    script {
-        def testPassed = true
-    }
     stages {
+        stage('Set up') {
+            steps {
+                script {
+                    def testPassed = true
+                }
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Hello world!'
@@ -13,7 +17,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Tests FAILED"
-                testPassed = false
+                script {
+                    testPassed = false
+                }
             }
         }
         stage('Deploy') {
@@ -22,7 +28,7 @@ pipeline {
                     return testPassed
                 }
             }
-            setps {
+            steps {
                 echo "Deploying"
             }
         }
