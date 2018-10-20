@@ -1,15 +1,27 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
+    def testPassed = true
     stages {
-        stage('Stage 1') {
+        stage('Build') {
             steps {
                 echo 'Hello world!'
             }
         }
-        stage('Stage 2') {
+        stage('Test') {
             steps {
-                sh 'dotnet --version'
+                echo "Tests FAILED"
+                testPassed = false
+            }
+        }
+        stage('Deploy') {
+            when {
+                expression {
+                    return testPassed
+                }
+            }
+            setps {
+                echo "Deploying"
             }
         }
     }
