@@ -1,7 +1,9 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
-    def testPassed = true
+    script {
+        def testPassed = true
+    }
     stages {
         stage('Build') {
             steps {
