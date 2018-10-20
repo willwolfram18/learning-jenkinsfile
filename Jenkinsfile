@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Stage 2') {
             steps {
-                dotnet --version
+                sh 'dotnet --version'
             }
         }
     }
