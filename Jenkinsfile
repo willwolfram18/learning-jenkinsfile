@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Hello world!'
+                script 'dotnet build -c Release -p:Version=%DefaultVersion%.%BUILD_NUMBER%'
             }
         }
         stage('Test') {
