@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'dotnet build -c Release -p:Version=%DefaultVersion%.%BUILD_NUMBER%'
+                sh 'dotnet build -c Release -p:Version=${DefaultVersion}.${BUILD_NUMBER}'
             }
         }
         stage('Test') {
