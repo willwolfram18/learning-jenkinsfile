@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'dotnet build -c Release -p:Version=1.0.0.${BUILD_NUMBER}'
+                sh 'dotnet build -c Release -p:Version=1.0.0.${BUILDS_ALL_TIME}'
             }
         }
         stage('Test') {
